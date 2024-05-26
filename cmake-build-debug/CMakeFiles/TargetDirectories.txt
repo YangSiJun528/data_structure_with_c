@@ -1,0 +1,3 @@
+/Users/sijunyang/CLionProjects/data_structure_with_c/cmake-build-debug/CMakeFiles/data_structure_with_c.dir
+/Users/sijunyang/CLionProjects/data_structure_with_c/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/sijunyang/CLionProjects/data_structure_with_c/cmake-build-debug/CMakeFiles/rebuild_cache.dir
