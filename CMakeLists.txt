@@ -3,4 +3,7 @@ project(data_structure_with_c C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(data_structure_with_c main.c)
+include_directories(src/include)
+include_directories(tests/include)
+add_subdirectory(src)
+add_subdirectory(tests)
