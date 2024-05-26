@@ -1,0 +1,8 @@
+//
+// Created by sijun yang on 2024. 5. 26.
+//
+
+#ifndef DATA_STRUCTURE_WITH_C_DYNAMIC_ARRAY_H
+#define DATA_STRUCTURE_WITH_C_DYNAMIC_ARRAY_H
+
+#endif //DATA_STRUCTURE_WITH_C_DYNAMIC_ARRAY_H
