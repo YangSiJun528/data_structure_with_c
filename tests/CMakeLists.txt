@@ -1,6 +1,5 @@
-# Add all .c files in the directory to SRC_FILES
-file(GLOB_RECURSE SRC_FILES CONFIGURE_DEPENDS
-        ${CMAKE_CURRENT_SOURCE_DIR}/*.c
-)
+# 테스트 파일 추가
+add_executable(dummy_test_file test_dummy.c)
 
-add_executable(data_structure_with_c_tests ${SRC_FILES})
+# 테스트 추가
+add_test(NAME dummy_test_name COMMAND dummy_test_file)
