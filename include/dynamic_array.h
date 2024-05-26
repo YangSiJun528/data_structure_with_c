@@ -2,7 +2,23 @@
 // Created by sijun yang on 2024. 5. 26.
 //
 
-#ifndef DATA_STRUCTURE_WITH_C_DYNAMIC_ARRAY_H
-#define DATA_STRUCTURE_WITH_C_DYNAMIC_ARRAY_H
+#ifndef DYNAMIC_ARRAY_H
+#define DYNAMIC_ARRAY_H
 
-#endif //DATA_STRUCTURE_WITH_C_DYNAMIC_ARRAY_H
+typedef struct {
+    void *data;         // 데이터 포인터
+    int element_size;   // 요소의 크기
+    int length;         // 현재 크기
+    int capacity;       // 용량
+} Darr;
+
+Darr darr_create(int element_size);
+void darr_add(Darr *darr, void *element);
+void darr_insert(Darr *darr, int index, void *element);
+void darr_delete(Darr *darr, int index);
+void* darr_get(Darr *darr, int index);
+int darr_length(Darr *darr);
+char* darr_to_string(Darr *darr);
+void darr_free(Darr *darr);
+
+#endif //DYNAMIC_ARRAY_H
