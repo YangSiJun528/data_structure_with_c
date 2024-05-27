@@ -4,7 +4,11 @@
 
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 #include "dynamic_array.h"
+
+#define INIT_CAPACITY 10
+#define RESIZE_SCALE 2
 
 /*
  * 메모

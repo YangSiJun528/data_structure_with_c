@@ -5,8 +5,8 @@
 #ifndef DYNAMIC_ARRAY_H
 #define DYNAMIC_ARRAY_H
 
-const int INIT_CAPACITY = 10;
-const int RESIZE_SCALE = 2;
+extern int INIT_CAPACITY;
+extern int RESIZE_SCALE;
 
 typedef struct {
     void *data;         // 데이터 포인터
