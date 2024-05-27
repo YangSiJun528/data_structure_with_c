@@ -5,6 +5,9 @@
 #ifndef DYNAMIC_ARRAY_H
 #define DYNAMIC_ARRAY_H
 
+const int INIT_CAPACITY = 10;
+const int RESIZE_SCALE = 2;
+
 typedef struct {
     void *data;         // 데이터 포인터
     int element_size;   // 요소의 크기

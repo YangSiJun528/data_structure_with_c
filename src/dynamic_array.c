@@ -17,7 +17,12 @@
 // inline 사용 이유 -> 성능
 static inline void resize(Darr *darr);
 
-Darr darr_create(int element_size) {};
+Darr darr_create(int element_size) {
+    assert(element_size > 0);
+    void *prt = malloc(INIT_CAPACITY * element_size);
+    Darr darr = {prt, element_size, 0, (INIT_CAPACITY * element_size)};
+    return darr;
+};
 
 void darr_add(Darr *darr, void *element) {};
 
@@ -31,6 +36,9 @@ int darr_length(Darr *darr) {};
 
 char* darr_to_string(Darr *darr) {};
 
-void darr_free(Darr *darr) {};
+void darr_free(Darr *darr) {
+    free(darr->data);
+    free(darr);
+};
 
 static inline void resize(Darr *darr) {};
