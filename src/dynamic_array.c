@@ -24,6 +24,7 @@ static inline void resize(Darr *darr);
 Darr darr_create(int element_size) {
     assert(element_size > 0);
     void *prt = malloc(INIT_CAPACITY * element_size);
+    assert(prt != NULL); // 이거는 if문으로 예외 던지는 게 맞을거 같긴 함.
     Darr darr = {prt, element_size, 0, (INIT_CAPACITY * element_size)};
     return darr;
 };
