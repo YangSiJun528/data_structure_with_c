@@ -18,6 +18,7 @@ typedef struct {
 Darr darr_create(int element_size);
 void darr_add(Darr *darr, void *element);
 void darr_insert(Darr *darr, int index, void *element);
+void darr_pop(Darr *darr);
 void darr_delete(Darr *darr, int index);
 void* darr_get(Darr *darr, int index);
 int darr_length(Darr *darr);

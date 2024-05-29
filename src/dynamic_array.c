@@ -49,10 +49,16 @@ void darr_insert(Darr *darr, int index, void *element) {
 }
 
 void darr_delete(Darr *darr, int index) {
+
     assert(index < darr->length); // 삭제할 인덱스는 현재 할당된 최대 인덱스(darr->length-1)보다 작거나 같아야 한다.
     memmove(get(darr, index), // 메모리가 덮어씌워지면서 데이터 삭제됨
             get(darr, index+1),
             (darr->length - index) * darr->element_size);
+    darr->length -= 1;
+};
+
+void darr_pop(Darr *darr) {
+    // 그냥 curr idx 포인터를 낮춰서 삭제한 것처럼 보이게 함. 어차피 나중에 요소가 추가되면 덮어씌워짐.
     darr->length -= 1;
 };
 

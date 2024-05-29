@@ -36,6 +36,11 @@ int main() {
     printf("Array after deleting element at index 5: ");
     print_array(&darr, print_int);
 
+    // Test popping an element
+    darr_pop(&darr);
+    printf("Array after popping: ");
+    print_array(&darr, print_int);
+
     // Test getting elements
     printf("Element at index 0: %d\n", *(int *)darr_get(&darr, 0));
     printf("Element at index 10: %d\n", *(int *)darr_get(&darr, 10));
