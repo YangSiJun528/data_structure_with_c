@@ -21,7 +21,6 @@ void darr_insert(Darr *darr, int index, void *element);
 void darr_delete(Darr *darr, int index);
 void* darr_get(Darr *darr, int index);
 int darr_length(Darr *darr);
-char* darr_to_string(Darr *darr);
 void darr_free(Darr *darr);
 
 #endif //DYNAMIC_ARRAY_H

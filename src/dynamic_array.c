@@ -65,8 +65,6 @@ int darr_length(Darr *darr) {
     return darr->length;
 };
 
-char *darr_to_string(Darr *darr) {}; // 이거는 구현이 애매해서 걍 구현 안할듯
-
 void darr_free(Darr *darr) {
     free(darr->data);
     // darr 자체는 동적 할당되지 않았으므로 free 할 필요 없음
