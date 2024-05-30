@@ -62,6 +62,12 @@ void darr_pop(Darr *darr) {
     darr->length -= 1;
 };
 
+void darr_update(Darr *darr, int index, void *element) {
+    assert(index < darr->length); // 요소를 대체할 인덱스는 현재 할당된 최대 인덱스(darr->length-1)보다 작거나 같아야 한다.
+    memcpy(get(darr, index), element, darr->element_size);
+};
+
+
 void *darr_get(Darr *darr, int index) {
     assert(index >= 0 && index < darr->length); // 유효한 인덱스 확인
     return get(darr, index);

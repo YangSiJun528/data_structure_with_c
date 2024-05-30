@@ -20,6 +20,7 @@ void darr_add(Darr *darr, void *element);
 void darr_insert(Darr *darr, int index, void *element);
 void darr_pop(Darr *darr);
 void darr_delete(Darr *darr, int index);
+void darr_update(Darr *darr, int index, void *element);
 void* darr_get(Darr *darr, int index);
 int darr_length(Darr *darr);
 void darr_free(Darr *darr);
