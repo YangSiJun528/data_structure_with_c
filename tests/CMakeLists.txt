@@ -6,3 +6,7 @@ target_link_libraries(test_timer_file data_structure_with_c_lib)
 
 # 테스트 추가
 add_test(NAME test_timer COMMAND test_timer_file)
+
+add_executable(test_log_write_to_file_file test_log_write_to_file.c)
+target_link_libraries(test_log_write_to_file_file data_structure_with_c_lib)
+add_test(NAME test_log_write_to_file COMMAND test_log_write_to_file_file)
