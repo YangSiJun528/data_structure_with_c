@@ -1,0 +1,1 @@
+To upload log directory to github repository
