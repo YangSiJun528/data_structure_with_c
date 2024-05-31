@@ -2,8 +2,9 @@
 #include <time.h>
 #include "dynamic_array.h"
 #include "timer.h"
+#include "log_write_to_file.h"
 
-#define ELEMENT_COUNT 10000000
+#define ELEMENT_COUNT 500000
 
 // 더미 데이터 구조체
 typedef struct {
@@ -85,6 +86,9 @@ int main() {
 
     // 동적 배열 해제
     darr_free(&darr);
+
+    // 측정한 수행 시간 로그를 파일로 저장
+    save_log(subsystems);
 
     return 0;
 }
