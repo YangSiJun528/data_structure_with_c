@@ -12,7 +12,7 @@ char* LOG_DIRECTORY = "/Users/sijunyang/CLionProjects/data_structure_with_c/test
 // 로그를 파일에 저장하는 함수
 void save_logs_to_file(const char *subsystem) {
     FILE *fp;
-    char path[1035];
+    char path[1024];
     char command[256];
     char filename[512];
 

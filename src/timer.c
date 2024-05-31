@@ -7,6 +7,7 @@
 #include "timer.h"
 
 os_log_t LOGGER = NULL;
+unsigned long long id = 0;
 
 void init_logger(const os_log_t* logger) {
     LOGGER = *logger;
@@ -14,5 +15,6 @@ void init_logger(const os_log_t* logger) {
 
 void log_operation(const char* operation_name, int data_size, double duration) {
     assert(LOGGER != NULL);
-    os_log(LOGGER, "Operation: %s, Data Size: %d, Duration: %.8f seconds", operation_name, data_size, duration);
+    id++;
+    os_log(LOGGER, "Id: %llu, Operation: %s, Data Size: %d, Duration: %.8f seconds", id, operation_name, data_size, duration);
 }
