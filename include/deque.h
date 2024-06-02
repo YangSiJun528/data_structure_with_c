@@ -12,8 +12,8 @@ extern int RESIZE_SCALE;
 
 typedef struct {
     void *data;     // 데이터 포인터
-    int front;      // 시작 인덱스
-    int rear;       // 마지막 인덱스
+    int front;      // 시작 위치
+    int rear;       // 마지막 위치
     int capacity;   // 현재 할당된 크기
     int element_size;   // 요소 한 개의 크기
 } Deque;
