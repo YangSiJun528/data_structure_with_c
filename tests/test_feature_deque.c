@@ -17,6 +17,15 @@ Deque init_deque() {
     return deque;
 };
 
+Deque init_deque_left_push() {
+    Deque deque = deque_create(sizeof(int));
+    for (int i = 0; i < 100; ++i) {
+        deque_push_left(&deque, &i);
+        print_array(&deque);
+    }
+    return deque;
+};
+
 void finally_deque(Deque deque) {
     deque_free(&deque);
 }
@@ -41,6 +50,10 @@ int main() {
         };
     }
 
+    Deque deque2 = init_deque_left_push();
+    print_array(&deque2);
+
     deque_free(&deque1);
+    deque_free(&deque2);
     return 0;
 }
