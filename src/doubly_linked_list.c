@@ -40,15 +40,16 @@
  * Node - addr 20 - [prev(10) - value(101) - NULL]
  */
 
-static inline Node *create_node(TYPE* value);
-static inline void unlink_node(Node* node);
+static inline Node *create_node(TYPE *value);
+
+static inline void unlink_node(Node *node);
 
 LinkedList linkedlist_create() {
     LinkedList linked_list = {NULL, NULL, 0};
     return linked_list;
 }
 
-void linkedlist_push(LinkedList *linked_list, TYPE* element) {
+void linkedlist_push(LinkedList *linked_list, TYPE *element) {
     assert(linked_list->length >= 0);
     Node *new_node = create_node(element);
     if (linked_list->length == 0) {
@@ -62,10 +63,10 @@ void linkedlist_push(LinkedList *linked_list, TYPE* element) {
     linked_list->length += 1;
 }
 
-TYPE* linkedlist_popleft(LinkedList *linked_list) {
+TYPE *linkedlist_popleft(LinkedList *linked_list) {
     assert(linked_list->length != 0);
     Node *popped_node = linked_list->head;
-    TYPE* value = popped_node->value;
+    TYPE *value = popped_node->value;
     if (linked_list->length == 1) {
         linked_list->tail = NULL;
         linked_list->head = NULL;
@@ -80,10 +81,10 @@ TYPE* linkedlist_popleft(LinkedList *linked_list) {
     return value;
 }
 
-TYPE* linkedlist_pop(LinkedList *linked_list) {
+TYPE *linkedlist_pop(LinkedList *linked_list) {
     assert(linked_list->length != 0); // 이거는 사용자 문제(예외)
     Node *popped_node = linked_list->tail;
-    TYPE* value = popped_node->value;
+    TYPE *value = popped_node->value;
     if (linked_list->length == 1) { // 아니면 tail or head == NULL
         linked_list->tail = NULL;
         linked_list->head = NULL;
@@ -98,7 +99,7 @@ TYPE* linkedlist_pop(LinkedList *linked_list) {
     return value;
 }
 
-void linkedlist_pushleft(LinkedList *linked_list, TYPE* element) {
+void linkedlist_pushleft(LinkedList *linked_list, TYPE *element) {
     assert(linked_list->length >= 0);
     Node *new_node = create_node(element);
     if (linked_list->length == 0) {
@@ -113,27 +114,27 @@ void linkedlist_pushleft(LinkedList *linked_list, TYPE* element) {
 }
 
 
-TYPE* linkedlist_get(LinkedList *linked_list, int index) {
+TYPE *linkedlist_get(LinkedList *linked_list, int index) {
     assert(index >= 0 && index < linked_list->length); // 사용자 문제(예외)
-    Node* ptr = linked_list->head;
+    Node *ptr = linked_list->head;
     for (int i = 0; i < index; ++i) {
         ptr += 1;
     }
     return ptr->value;
 }
 
-void linkedlist_insert(LinkedList *linked_list, TYPE* element) {}
+void linkedlist_insert(LinkedList *linked_list, int index, TYPE *element) {}
 
-void linkedlist_update(LinkedList *linked_list, TYPE* element) {}
+void linkedlist_update(LinkedList *linked_list, int index, TYPE *element) {}
 
-TYPE* linkedlist_delete(LinkedList *linked_list) {}
+TYPE *linkedlist_delete(LinkedList *linked_list, int index) {}
 
 int linkedlist_length(LinkedList *linked_list) {
     return linked_list->length;
 }
 
 
-static inline Node *create_node(TYPE* value) {
+static inline Node *create_node(TYPE *value) {
     Node *new_node = (Node *) malloc(sizeof(Node));
     assert(new_node != NULL);
     new_node->next = NULL;
@@ -142,7 +143,7 @@ static inline Node *create_node(TYPE* value) {
     return new_node;
 }
 
-static inline void unlink_node(Node* node) { // 이거 없어도 될거 같은데, GC가 있는 것도 아니고
+static inline void unlink_node(Node *node) { // 이거 없어도 될거 같은데, GC가 있는 것도 아니고
     node->next = NULL;
     node->prev = NULL;
 }

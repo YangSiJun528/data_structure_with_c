@@ -16,7 +16,7 @@ typedef struct {
 } Complex;
 
 typedef struct Node {
-    TYPE* value;         // 노드가 저장한 값
+    TYPE *value;         // 노드가 저장한 값
     struct Node *next;  // 다음 노드를 가리키는 포인터
     struct Node *prev;  // 이전 노드를 가리키는 포인터
 } Node;
@@ -29,21 +29,21 @@ typedef struct {
 
 LinkedList linkedlist_create();
 
-void linkedlist_push(LinkedList *linked_list, TYPE* element);
+void linkedlist_push(LinkedList *linked_list, TYPE *element);
 
-TYPE* linkedlist_pop(LinkedList *linked_list);
+TYPE *linkedlist_pop(LinkedList *linked_list);
 
-void linkedlist_pushleft(LinkedList *linked_list, TYPE* element);
+void linkedlist_pushleft(LinkedList *linked_list, TYPE *element);
 
-TYPE* linkedlist_popleft(LinkedList *linked_list);
+TYPE *linkedlist_popleft(LinkedList *linked_list);
 
-TYPE* linkedlist_get(LinkedList *linked_list, int index);
+TYPE *linkedlist_get(LinkedList *linked_list, int index);
 
-void linkedlist_insert(LinkedList *linked_list, TYPE* element);
+void linkedlist_insert(LinkedList *linked_list, int index, TYPE *element);
 
-void linkedlist_update(LinkedList *linked_list, TYPE* element);
+void linkedlist_update(LinkedList *linked_list, int index, TYPE *element);
 
-TYPE* linkedlist_delete(LinkedList *linked_list);
+TYPE *linkedlist_delete(LinkedList *linked_list, int index);
 
 int linkedlist_length(LinkedList *linked_list);
 
