@@ -4,11 +4,16 @@
 
 #ifndef DATA_STRUCTURE_WITH_C_DOUBLY_LINKED_LIST_H
 #define DATA_STRUCTURE_WITH_C_DOUBLY_LINKED_LIST_H
-#define TYPE Data // 자료구조의 요소 타입, 구조체나 배열만 가능. 포인터를 사용하는 방식으로 일관성있게 처리할거라 그럼. void* 도 가능하긴 한데, 그럼 포인터 다루기 까다로워서...
+#define TYPE Complex // 자료구조의 요소 타입, 구조체나 배열만 가능. 포인터를 사용하는 방식으로 일관성있게 처리할거라 그럼. void* 도 가능하긴 한데, 그럼 포인터 다루기 까다로워서...
 
 typedef struct {
     int value;
 } Data;
+
+typedef struct {
+    int value;
+    char* name;
+} Complex;
 
 typedef struct Node {
     TYPE value;         // 노드가 저장한 값
