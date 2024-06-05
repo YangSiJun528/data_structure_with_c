@@ -67,11 +67,33 @@ int main() {
 
     // get 테스트
     Complex* getData = linkedlist_get(&list, 2);
-    printf("Get element at index 2: %d\n", (*getData).value);
+    printf("Get element at index 2: %d\n", getData->value);
 
     // length 테스트
     int length = linkedlist_length(&list);
     printf("Length of list: %d\n", length);
+
+    // insert 테스트
+    Complex* data6 = (Complex*)malloc(sizeof(Complex));
+    data6->value = 6;
+    strcpy(data6->name, "6aaa");
+    linkedlist_insert(&list, 2, data6);
+    printf("After inserting element \"6aaa.6\" at index 2:\n");
+    print_list(&list);
+
+    // update 테스트
+    Complex* data7 = (Complex*)malloc(sizeof(Complex));
+    data7->value = 7;
+    strcpy(data7->name, "7aaa");
+    linkedlist_update(&list, 2, data7);
+    printf("After updating element at index 2:\n");
+    print_list(&list);
+
+    // delete 테스트
+    Complex* deletedData = linkedlist_delete(&list, 2);
+    printf("Deleted element: %d, %s\n", deletedData->value, deletedData->name);
+    printf("After deleting element at index 2:\n");
+    print_list(&list);
 
     // pop 테스트
     Complex* popData = linkedlist_pop(&list);
