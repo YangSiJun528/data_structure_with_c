@@ -12,7 +12,7 @@ typedef struct Node {
     struct Node* prev;  // 이전 노드를 가리키는 포인터
 } Node;
 
-typedef struct LinkedList {
+typedef struct {
     Node* head;     // 처음 노드
     Node* tail;     // 마지막 노드
     int length;     // 배열 길이
