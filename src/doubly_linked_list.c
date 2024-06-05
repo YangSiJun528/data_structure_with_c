@@ -44,6 +44,8 @@ static inline Node *create_node(TYPE *value);
 
 static inline void unlink_node(Node *node);
 
+static inline Node *get(LinkedList *linked_list, int index);
+
 LinkedList linkedlist_create() {
     LinkedList linked_list = {NULL, NULL, 0};
     return linked_list;
@@ -116,18 +118,39 @@ void linkedlist_pushleft(LinkedList *linked_list, TYPE *element) {
 
 TYPE *linkedlist_get(LinkedList *linked_list, int index) {
     assert(index >= 0 && index < linked_list->length); // 사용자 문제(예외)
-    Node *ptr = linked_list->head;
-    for (int i = 0; i < index; ++i) {
-        ptr += 1;
-    }
-    return ptr->value;
+    Node *node = get(linked_list, index);
+    return node->value;
 }
 
-void linkedlist_insert(LinkedList *linked_list, int index, TYPE *element) {}
+void linkedlist_insert(LinkedList *linked_list, int index, TYPE *element) {
+    assert(index >= 0 && index < linked_list->length); // 사용자 문제(예외)
+    Node *existing_node = get(linked_list, index);
+    Node *new_node = create_node(element);
+    Node* prev_node = existing_node->prev;
+    new_node->next = existing_node;
+    existing_node->prev = new_node;
+    new_node->prev = prev_node;
+    prev_node->next = new_node;
+    linked_list->length += 1;
+}
 
-void linkedlist_update(LinkedList *linked_list, int index, TYPE *element) {}
+void linkedlist_update(LinkedList *linked_list, int index, TYPE *element) {
+    assert(index >= 0 && index < linked_list->length); // 사용자 문제(예외)
+    Node *node = get(linked_list, index);
+    node->value = element;
+}
 
-TYPE *linkedlist_delete(LinkedList *linked_list, int index) {}
+TYPE *linkedlist_delete(LinkedList *linked_list, int index) {
+    assert(index >= 0 && index < linked_list->length); // 사용자 문제(예외)
+    Node *node = get(linked_list, index);
+    TYPE* value = node->value;
+    node->prev->next = node->next;
+    node->next->prev = node->prev;
+    unlink_node(node);
+    free(node);
+    linked_list->length -= 1;
+    return value;
+}
 
 int linkedlist_length(LinkedList *linked_list) {
     return linked_list->length;
@@ -146,4 +169,12 @@ static inline Node *create_node(TYPE *value) {
 static inline void unlink_node(Node *node) { // 이거 없어도 될거 같은데, GC가 있는 것도 아니고
     node->next = NULL;
     node->prev = NULL;
+}
+
+static inline Node *get(LinkedList *linked_list, int index) {
+    Node *ptr = linked_list->head;
+    for (int i = 0; i < index; ++i) {
+        ptr = ptr->next;
+    }
+    return ptr;
 }
