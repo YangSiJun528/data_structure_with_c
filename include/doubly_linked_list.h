@@ -8,10 +8,6 @@
 
 typedef struct {
     int value;
-} Data;
-
-typedef struct {
-    int value;
     char name[10];
 } Complex;
 
