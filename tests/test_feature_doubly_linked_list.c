@@ -90,8 +90,7 @@ int main() {
     print_list(&list);
 
     // delete 테스트
-    Complex* deletedData = linkedlist_delete(&list, 2);
-    printf("Deleted element: %d, %s\n", deletedData->value, deletedData->name);
+    linkedlist_delete(&list, 2);
     printf("After deleting element at index 2:\n");
     print_list(&list);
 

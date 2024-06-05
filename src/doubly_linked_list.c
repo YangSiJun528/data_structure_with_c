@@ -126,7 +126,7 @@ void linkedlist_insert(LinkedList *linked_list, int index, TYPE *element) {
     assert(index >= 0 && index < linked_list->length); // 사용자 문제(예외)
     Node *existing_node = get(linked_list, index);
     Node *new_node = create_node(element);
-    Node* prev_node = existing_node->prev;
+    Node *prev_node = existing_node->prev;
     new_node->next = existing_node;
     existing_node->prev = new_node;
     new_node->prev = prev_node;
@@ -140,16 +140,16 @@ void linkedlist_update(LinkedList *linked_list, int index, TYPE *element) {
     node->value = element;
 }
 
-TYPE *linkedlist_delete(LinkedList *linked_list, int index) {
+void linkedlist_delete(LinkedList *linked_list, int index) {
     assert(index >= 0 && index < linked_list->length); // 사용자 문제(예외)
     Node *node = get(linked_list, index);
-    TYPE* value = node->value;
+    TYPE *value = node->value;
     node->prev->next = node->next;
     node->next->prev = node->prev;
     unlink_node(node);
     free(node);
     linked_list->length -= 1;
-    return value;
+    free(value);
 }
 
 int linkedlist_length(LinkedList *linked_list) {

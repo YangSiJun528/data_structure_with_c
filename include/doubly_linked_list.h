@@ -43,7 +43,7 @@ void linkedlist_insert(LinkedList *linked_list, int index, TYPE *element);
 
 void linkedlist_update(LinkedList *linked_list, int index, TYPE *element);
 
-TYPE *linkedlist_delete(LinkedList *linked_list, int index);
+void linkedlist_delete(LinkedList *linked_list, int index);
 
 int linkedlist_length(LinkedList *linked_list);
 
