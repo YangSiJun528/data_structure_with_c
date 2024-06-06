@@ -123,14 +123,23 @@ TYPE *linkedlist_get(LinkedList *linked_list, int index) {
 }
 
 void linkedlist_insert(LinkedList *linked_list, int index, TYPE *element) {
-    assert(index >= 0 && index < linked_list->length); // 사용자 문제(예외)
-    Node *existing_node = get(linked_list, index);
+    assert(index >= 0 && index <= linked_list->length);
+    Node *existing_node = index < linked_list->length ? get(linked_list, index) : NULL;
     Node *new_node = create_node(element);
-    Node *prev_node = existing_node->prev;
-    new_node->next = existing_node;
-    existing_node->prev = new_node;
-    new_node->prev = prev_node;
-    prev_node->next = new_node;
+    Node *prev_node = existing_node != NULL ? existing_node->prev : linked_list->tail;
+    if (existing_node != NULL) {
+        new_node->next = existing_node;
+        existing_node->prev = new_node;
+    } else {
+        linked_list->tail = new_node;
+    }
+    if (prev_node != NULL) {
+        new_node->prev = prev_node;
+        prev_node->next = new_node;
+    } else {
+        linked_list->head = new_node;
+    }
+
     linked_list->length += 1;
 }
 
@@ -141,11 +150,19 @@ void linkedlist_update(LinkedList *linked_list, int index, TYPE *element) {
 }
 
 void linkedlist_delete(LinkedList *linked_list, int index) {
-    assert(index >= 0 && index < linked_list->length); // 사용자 문제(예외)
+    assert(index >= 0 && index < linked_list->length);
     Node *node = get(linked_list, index);
     TYPE *value = node->value;
-    node->prev->next = node->next;
-    node->next->prev = node->prev;
+    if (node->prev != NULL) {
+        node->prev->next = node->next;
+    } else {
+        linked_list->head = node->next;
+    }
+    if (node->next != NULL) {
+        node->next->prev = node->prev;
+    } else {
+        linked_list->tail = node->prev;
+    }
     unlink_node(node);
     free(node);
     linked_list->length -= 1;
@@ -155,7 +172,6 @@ void linkedlist_delete(LinkedList *linked_list, int index) {
 int linkedlist_length(LinkedList *linked_list) {
     return linked_list->length;
 }
-
 
 static inline Node *create_node(TYPE *value) {
     Node *new_node = (Node *) malloc(sizeof(Node));
