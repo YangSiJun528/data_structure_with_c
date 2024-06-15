@@ -11,6 +11,11 @@ typedef struct {
     char name[10];
 } Complex;
 
+/*
+ * 구조체 Node가 Node 타입의 멤버를 포함하고 있으면,
+ * 이는 재귀적인 정의가 되어버려, 구조체의 크기를 결정할 수 없다.
+ * 이를 해결하기 위해서는 구조체 포인터를 사용해야 한다.
+ */
 typedef struct Node {
     TYPE *value;         // 노드가 저장한 값
     struct Node *next;  // 다음 노드를 가리키는 포인터
