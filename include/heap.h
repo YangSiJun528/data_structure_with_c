@@ -18,20 +18,20 @@ typedef struct {
     int size;
 } Heap;
 
-Heap heap_init();
+Heap *heap_init();
 
-Heap heap_init_set_capacity(int init_capacity);
+Heap *heap_init_set_capacity(int init_capacity);
 
-void heap_push(Heap heap, TYPE data);
+void heap_push(Heap *heap, TYPE data);
 
-TYPE heap_pop(Heap heap);
+TYPE heap_pop(Heap *heap);
 
-int heap_get_size(Heap heap);
+int heap_get_size(Heap *heap);
 
-bool heap_is_empty(Heap heap);
+bool heap_is_empty(Heap *heap);
 
-TYPE heap_peek(Heap heap);
+TYPE heap_peek(Heap *heap);
 
-void heap_free(Heap heap);
+void heap_free(Heap *heap);
 
 #endif //DATA_STRUCTURE_WITH_C_HEAP_H
