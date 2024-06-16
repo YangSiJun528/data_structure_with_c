@@ -61,7 +61,7 @@ Heap *heap_init_set_capacity(int init_capacity) {
 }
 
 void heap_push(Heap *heap, TYPE data) {
-    if (heap->size * sizeof(TYPE) == heap->capacity) {
+    if (heap->size * sizeof(TYPE) >= heap->capacity) {
         resize(heap);
     }
     add_latest(heap, data);
